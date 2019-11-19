@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Motion.EmotionAnalysis.API import *
+from Motion.EmotionAnalysis import API
 
 
 # Home Page
