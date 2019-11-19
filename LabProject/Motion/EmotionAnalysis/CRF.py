@@ -6,8 +6,10 @@ from sklearn.externals import joblib
 import time
 import copy
 
-jieba.load_userdict('dict.txt')
-data = pd.read_csv('train.csv')
+
+# 部署时改为服务器的绝对路径
+jieba.load_userdict('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/dict.txt')
+data = pd.read_csv('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/train.csv')
 
 start = time.perf_counter()
 

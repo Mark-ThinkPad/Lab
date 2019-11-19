@@ -134,3 +134,13 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'  # 跟STATIC_URL类似，指定用户可以通过这个路径找到文件
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Cache in File System
+# https://docs.djangoproject.com/zh-hans/2.2/topics/cache/
+# 部署后修改绝对路径
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/home/mark/GitHub/Lab/cache',
+    }
+}

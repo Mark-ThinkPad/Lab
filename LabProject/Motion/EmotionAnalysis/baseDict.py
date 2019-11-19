@@ -7,14 +7,15 @@ from pyltp import Parser
 
 start = time.perf_counter()
 
-jieba.load_userdict('dict.txt')
-data = pd.read_csv('try20.csv')
+# 部署时更改为服务器上的绝对路径
+jieba.load_userdict('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/dict.txt')
+data = pd.read_csv('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/try20.csv')
 # data = data[int(len(data)*0.80):]
-pos = (open("pos.txt", 'r', encoding="utf-8")).readlines()
-neg = (open("neg.txt", 'r', encoding="utf-8")).readlines()
-neu = (open("neu.txt", 'r', encoding="utf-8")).readlines()
-stop = (open("stopword.txt", 'r', encoding="utf-8")).readlines()
-output = (open("output.txt", 'w', encoding="utf-8"))
+pos = (open("/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/pos.txt", 'r', encoding="utf-8")).readlines()
+neg = (open("/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/neg.txt", 'r', encoding="utf-8")).readlines()
+neu = (open("/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/neu.txt", 'r', encoding="utf-8")).readlines()
+stop = (open("/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/stopword.txt", 'r', encoding="utf-8")).readlines()
+output = (open("/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/output.txt", 'w', encoding="utf-8"))
 
 '''
 分词并标注，与情感词典匹配，与哪一个匹配成功则打对应标签
@@ -90,7 +91,7 @@ def getTheme(arcs, words, p, senti):
     return 'NULL'
 
 
-def getSentiment(e):  # 传入一句话
+def getSentiment(e) -> list:  # 传入一句话
     cons, p = segmentor(e)
     arcs = parse(cons, p)
     csentiment = []  # 该句中的情感词

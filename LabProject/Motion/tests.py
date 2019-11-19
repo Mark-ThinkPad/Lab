@@ -1,5 +1,6 @@
 from django.test import TestCase
-from Motion.EmotionAnalysis import API
+from Motion.EmotionAnalysis.API import API
 
 # Create your tests here.
-print(API.getContent('你好'))
+test = API()
+print(test.getAtrain())

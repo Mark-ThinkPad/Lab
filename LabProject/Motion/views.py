@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from Motion.EmotionAnalysis import API
+from django.views.decorators.http import require_GET, require_POST
+from Motion.EmotionAnalysis.API import API
 
 
 # Home Page
+@require_GET
 def index(request):
     return render(request, 'index.html')

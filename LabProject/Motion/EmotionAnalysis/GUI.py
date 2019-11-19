@@ -108,12 +108,12 @@ def getAtrain():
     out.delete('1.0', 'end')
     out.insert('end', '抽取出第{}句:\n'.format(x + 1))
     out.insert('end', con[x])
-    out.insert('end', '\n\n标注<主题，情感，极性>三元组：\n')
-    DictPoss = tuple_poss[int(len(data) * 0.8):]
-    out.insert('end', DictPoss[x])
-    out.insert('end', '\n\n情感词典预测<主题，情感，极性>三元组：\n')
-    DictPred = tuple_pred[int(len(data) * 0.8):]
-    out.insert('end', DictPred[x])
+    # out.insert('end', '\n\n标注<主题，情感，极性>三元组：\n')
+    # DictPoss = tuple_poss[int(len(data) * 0.8):]
+    # out.insert('end', DictPoss[x])
+    # out.insert('end', '\n\n情感词典预测<主题，情感，极性>三元组：\n')
+    # DictPred = tuple_pred[int(len(data) * 0.8):]
+    # out.insert('end', DictPred[x])
     out.insert('end', '\n\n条件随机场预测<主题，情感，极性>三元组：\n')
     gro = getTuple(con[x])
     out.insert('end', gro)
