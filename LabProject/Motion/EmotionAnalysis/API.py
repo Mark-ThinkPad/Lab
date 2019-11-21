@@ -28,12 +28,12 @@ class API:
             return '文件格式错误，请选择.csv文件'
         self.data = pd.read_csv(csvFile.name)
         x = random.randint(0, 20000)
-        outFileName = "result{}.csv".format(x)
+        outFileName = 'result{}.csv'.format(x)
         outFilePath = settings.MEDIA_ROOT + '/csv/' + outFileName
         res = ''
         with open(outFilePath, encoding='utf-8', mode='w', newline='', errors='ignore') as f:
             if 'content' not in list(self.data):
-                return '文件内容错误，请选择列名为“content”的csv文件'
+                return '文件内容错误，请选择列名为"content"的csv文件'
             writer = csv.writer(f)
             writer.writerow(['content', 'theme', 'sentiment', 'anls'])  # 写列名
             res = '文件已写入{}\n\n'.format(outFileName)

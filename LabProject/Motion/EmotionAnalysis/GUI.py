@@ -21,20 +21,20 @@ def getFile():
     e_file.delete(0, 'end')
     e_file.insert('insert', file_path)  # 'insert'——在鼠标焦点处插入输入内容，'end'——在末尾输入内容
     out.delete('1.0', 'end')
-    if file_path[-4:] != ".csv":
+    if file_path[-4:] != '.csv':
         out.insert('end', '文件格式错误，请选择.csv文件')
         return
     data = pd.read_csv(file_path)
     x = random.randint(0, 20000)
-    outFile = "result{}.csv".format(x)
+    outFile = 'result{}.csv'.format(x)
     f = open(outFile, encoding='utf-8', mode='w', newline='', errors='ignore')
     if "content" not in list(data):
         out.insert('end', '文件内容错误，请选择列名为“content”的csv文件')
         return
     writer = csv.writer(f)
-    writer.writerow(["content", "theme", "sentiment", "anls"])  # 写列名
-    out.insert('end', "文件已写入{}\n\n".format(outFile))
-    for content in data["content"]:
+    writer.writerow(['content', 'theme', 'sentiment', 'anls'])  # 写列名
+    out.insert('end', '文件已写入{}\n\n'.format(outFile))
+    for content in data['content']:
         gro = getTuple(content)
         theme = ''
         sentiment = ''
@@ -50,7 +50,7 @@ def getFile():
         out.insert('end', 'theme:     ' + theme + '\n')
         out.insert('end', 'sentiment: ' + sentiment + '\n')
         out.insert('end', 'anls:      ' + anls + '\n\n')
-    out.insert('end', "\n\n-----------------------已写完-----------------------\n\n")
+    out.insert('end', '\n\n-----------------------已写完-----------------------\n\n')
 
 
 def getTuple(content):
