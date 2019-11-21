@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_GET, require_POST
+from django.core.files.storage import default_storage
 # from Motion.EmotionAnalysis.API import API
 import hashlib
 

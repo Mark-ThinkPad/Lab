@@ -1,6 +1,8 @@
 from sklearn.externals import joblib
 from Motion.EmotionAnalysis import CRF
 from Motion.EmotionAnalysis import baseDict
+from django.core.files.base import File
+from LabProject import settings
 import pandas as pd
 import jieba.posseg
 import random
@@ -19,10 +21,40 @@ class API:
         self.tuple_pred, self.tuple_poss, self.megDict = joblib.load(
             open('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/VariableDict', 'rb'))
 
-    def getFile(self, csvFile) -> str:
+    # 尚未测试
+    def getFile(self, csvFile: File) -> str:
         filename = csvFile.name
         if filename[-4:] != '.csv':
             return '文件格式错误，请选择.csv文件'
+        self.data = pd.read_csv(csvFile.name)
+        x = random.randint(0, 20000)
+        outFileName = "result{}.csv".format(x)
+        outFilePath = settings.MEDIA_ROOT + '/csv/' + outFileName
+        res = ''
+        with open(outFilePath, encoding='utf-8', mode='w', newline='', errors='ignore') as f:
+            if 'content' not in list(self.data):
+                return '文件内容错误，请选择列名为“content”的csv文件'
+            writer = csv.writer(f)
+            writer.writerow(['content', 'theme', 'sentiment', 'anls'])  # 写列名
+            res = '文件已写入{}\n\n'.format(outFileName)
+            for content in self.data['content']:
+                gro = self.getTuple(content)
+                theme = ''
+                sentiment = ''
+                anls = ''
+                for g in gro:
+                    theme += g[0] + ';'
+                    sentiment += g[1] + ';'
+                    anls += g[2] + ';'
+                row = [content, theme, sentiment, anls]
+                # print(row)
+                writer.writerow(row)
+                res += content + '\n'
+                res += 'theme:     ' + theme + '\n'
+                res += 'sentiment: ' + sentiment + '\n'
+                res += 'anls:      ' + anls + '\n\n'
+            res += '\n\n-----------------------已写完-----------------------\n\n'
+        return res
 
     def getTuple(self, content) -> list:
         i = jieba.posseg.cut(content)  # 词性标注

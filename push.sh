@@ -1,3 +1,3 @@
 git add .
-git commit -m 'test something new'
+git commit -m 'API.getFile() rewiten completed but not test'
 git push

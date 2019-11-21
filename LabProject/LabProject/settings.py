@@ -144,3 +144,6 @@ CACHES = {
         'LOCATION': '/home/mark/GitHub/Lab/cache',
     }
 }
+
+# File Storage
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
