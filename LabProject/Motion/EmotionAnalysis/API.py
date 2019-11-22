@@ -21,7 +21,6 @@ class API:
         self.tuple_pred, self.tuple_poss, self.megDict = joblib.load(
             open('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/VariableDict', 'rb'))
 
-    # 尚未测试
     def getFile(self, csvFile: File) -> str:
         filename = csvFile.name
         if filename[-4:] != '.csv':
@@ -29,7 +28,7 @@ class API:
         self.data = pd.read_csv(csvFile.name)
         x = random.randint(0, 20000)
         outFileName = 'result{}.csv'.format(x)
-        outFilePath = settings.MEDIA_ROOT + '/csv/' + outFileName
+        outFilePath = settings.MEDIA_ROOT + '/temp/' + outFileName
         res = ''
         with open(outFilePath, encoding='utf-8', mode='w', newline='', errors='ignore') as f:
             if 'content' not in list(self.data):
