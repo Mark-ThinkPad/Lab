@@ -19,3 +19,9 @@ footer {
     bottom: 0;
     width: 100%;
 }
+#words {
+    width: auto;
+}
+#result {
+    height: 600px;
+}
