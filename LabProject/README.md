@@ -68,6 +68,4 @@ CACHES = {
 
 ## To-Do List
 
-- input file 输入判空(点击上传按钮时)
-- 五个按钮五个ajax
-- 对应的五个后端api
+- 部署到服务器
