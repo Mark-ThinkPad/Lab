@@ -26,7 +26,7 @@ class API:
         if filename[-4:] != '.csv':
             return '文件格式错误，请选择.csv文件'
         self.data = pd.read_csv(csvFile.name)
-        x = random.randint(0, 20000)
+        x = random.randint(0, 100000)
         outFileName = 'result{}.csv'.format(x)
         outFilePath = settings.MEDIA_ROOT + '/temp/' + outFileName
         res = ''

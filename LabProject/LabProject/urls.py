@@ -23,6 +23,10 @@ from LabProject import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
+    # APIs
+    path('api/getContent/', api_getContent, name='api_getContent'),
+    path('api/getFile/', api_getFile, name='api_getFile'),
+    path('api/get/<slug:slug>/', api_getTriple, name='api_getTriple'),
 ]
 
 # 配置静态页面

@@ -1,3 +1,3 @@
 git add .
-git commit -m 'Web UI finish'
+git commit -m 'Develop Finish'
 git push

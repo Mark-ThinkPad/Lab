@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/ea.css">
+{% endblock %}
+
 {% block main %}
 <div class="container">
-    <form>
+    <form onsubmit="return false;">
         <div class="form-group">
             <label for="words">请输入一句话:</label>
             <div class="input-group">
                 <input type="text" class="form-control" id="words">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary" id="upload_words">分析这句话</button>
+                    <button type="button" class="btn btn-primary" id="upload_words" disabled>分析这句话</button>
                 </div>
             </div>
         </div>
@@ -20,7 +24,7 @@
                     </label>
                 </div>
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-primary" id="upload_csvFile">上传csv文件</button>
+                    <button type="button" class="btn btn-primary" id="upload_csvFile" disabled>上传csv文件</button>
                 </div>
             </div>
         </div>
@@ -39,4 +43,9 @@
         </div>
     </form>
 </div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/js/js.cookie.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/js/ea.js" charset="UTF-8"></script>
 {% endblock %}
