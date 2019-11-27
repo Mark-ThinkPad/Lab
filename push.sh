@@ -1,3 +1,3 @@
 git add .
-git commit -m 'Develop Finish'
+git commit -m 'deploy'
 git push
