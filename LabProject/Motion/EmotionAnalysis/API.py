@@ -13,13 +13,13 @@ class API:
     def __init__(self):
         # 需要延时加载的部分, 前端需要做loading动画
         # 部署时修改为服务器上的相对路径
-        jieba.load_userdict('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/dict.txt')
-        self.data = pd.read_csv('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/train.csv')
-        self.crf = joblib.load('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/train_model')
+        jieba.load_userdict(settings.BASE_DIR + '/Motion/EmotionAnalysis/dict.txt')
+        self.data = pd.read_csv(settings.BASE_DIR + '/Motion/EmotionAnalysis/train.csv')
+        self.crf = joblib.load(settings.BASE_DIR + '/Motion/EmotionAnalysis/train_model')
         self.X_test, self.y_test, self.megCRF, self.f1, self.result, self.y_pred = joblib.load(
-            open('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/variableCRF', 'rb'))
+            open(settings.BASE_DIR + '/Motion/EmotionAnalysis/variableCRF', 'rb'))
         self.tuple_pred, self.tuple_poss, self.megDict = joblib.load(
-            open('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/VariableDict', 'rb'))
+            open(settings.BASE_DIR + '/Motion/EmotionAnalysis/VariableDict', 'rb'))
 
     def getFile(self, csvFile: File) -> str:
         filename = csvFile.name

@@ -141,7 +141,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/home/mark/GitHub/Lab/cache',
+        'LOCATION': BASE_DIR.replace('LabProject', '') + 'cache',
     }
 }
 

@@ -3,13 +3,14 @@ import jieba.posseg
 import sklearn_crfsuite
 from sklearn_crfsuite import metrics
 from sklearn.externals import joblib
+from LabProject import settings
 import time
 import copy
 
 
 # 部署时改为服务器的绝对路径
-jieba.load_userdict('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/dict.txt')
-data = pd.read_csv('/home/mark/GitHub/Lab/LabProject/Motion/EmotionAnalysis/train.csv')
+jieba.load_userdict(settings.BASE_DIR + '/Motion/EmotionAnalysis/dict.txt')
+data = pd.read_csv(settings.BASE_DIR + '/Motion/EmotionAnalysis/train.csv')
 
 start = time.perf_counter()
 

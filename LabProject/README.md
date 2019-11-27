@@ -30,7 +30,7 @@
 - 部分文件读取路径由相对路径改为绝对路径, 包括`CRF.py`, `baseDict.py` 和 `API.py`
 ```python
 # 部署时改为服务器的绝对路径
-# CRF.py 和 base.py 中共有的部分
+# CRF.py 和 baseDict.py 共有的部分
 jieba.load_userdict('dict.txt')
 data = pd.read_csv('train.csv')
 ```
