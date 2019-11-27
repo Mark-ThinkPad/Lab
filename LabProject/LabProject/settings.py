@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-# STATIC_ROOT = '/var/www/static/'
+STATIC_ROOT = '/var/www/static/'
 
 # Media files
 # https://blog.csdn.net/xxx_gt/article/details/79719790
