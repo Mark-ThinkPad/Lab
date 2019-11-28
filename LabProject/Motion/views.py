@@ -12,7 +12,8 @@ import hashlib
 def set_client_id(request) -> str:
     client_addr = request.META.get('REMOTE_ADDR', 'anonymous')
     client_host = request.META.get('REMOTE_HOST', 'unknown hostname')
-    id_source = client_addr + ', ' + client_host
+    client_port = request.META.get('REMOTE_PORT', 'random')
+    id_source = client_addr + ', ' + client_host + ', ' + client_port
     # 进行md5加密
     m = hashlib.md5()
     m.update(id_source.encode(encoding='utf-8'))
@@ -31,9 +32,9 @@ def index(request):
     cache_api = cache.get(client_id, False)
     if not cache_api:
         client_api = API()
-        cache.set(client_id, client_api, timeout=60 * 60 * 24 * 3)
+        cache.set(client_id, client_api, timeout=60 * 60 * 24 * 1)
     else:
-        cache.touch(client_id, timeout=60 * 60 * 24 * 3)
+        cache.touch(client_id, timeout=60 * 60 * 24 * 1)
 
     return response
 
