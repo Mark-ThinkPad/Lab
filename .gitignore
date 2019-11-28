@@ -126,5 +126,6 @@ dmypy.json
 
 # User Custom
 .idea/
+.vscode/
 parser.model
 *.djcache
