@@ -69,11 +69,13 @@ class API:
 
     # 手动输入一句话，输出预测结果
     def getContent(self, words: str) -> str:
-        res = words + '\n\n基于情感词典的结果：\n'
+        res = words + '\n\n基于情感词典的命中结果：\n'
         analysis: list = baseDict.getSentiment(words)
-        res += str(analysis) + '\n\n基于条件随机场的结果：\n'
+        temp1 = ','.join([f'"{a[1]}"' for a in analysis])
+        res += temp1 + '\n\n基于条件随机场的命中结果：\n'
         gro: list = self.getTuple(words)
-        res += str(gro)
+        temp2 = ','.join([f'"{g[1]}"' for g in gro])
+        res += str(temp2)
         return res
 
     # 返回模型F1值

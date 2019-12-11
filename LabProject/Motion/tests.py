@@ -1,5 +1,5 @@
 from django.test import TestCase
-# from Motion.EmotionAnalysis.API import API
+from Motion.EmotionAnalysis.API import API
 from LabProject import settings
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
@@ -22,5 +22,9 @@ os.environ.update({'DJANGO_SETTINGS_MODULE': 'LabProject.settings'})
 #     print(sts)
 # default_storage.delete(pa)
 # print(default_storage.exists(pa))
-print(settings.BASE_DIR)
-print(settings.BASE_DIR.replace('LabProject', '') + 'cache')
+# print(settings.BASE_DIR)
+# print(settings.BASE_DIR.replace('LabProject', '') + 'cache')
+t = API()
+res = t.getContent('iphone 11 pro max太贵了, 但是iOS生态很好用')
+print(res)
+print(type(res))
