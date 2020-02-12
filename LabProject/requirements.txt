@@ -1,4 +1,4 @@
-Django==2.2.9
+Django==2.2.10
 jieba==0.39
 pandas==0.25.3
 sklearn_crfsuite==0.3.6
