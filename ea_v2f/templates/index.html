@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/ea.css">
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form onsubmit="return false;">
+        <div class="form-group">
+            <label for="words">请输入一句话:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="words">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" id="upload_words" disabled>分析这句话</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" accept=".csv" id="csvFile">
+                    <label class="custom-file-label" for="csvFile" id="csvFile_label">
+                        上传特定的csv文件
+                    </label>
+                </div>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" id="upload_csvFile" disabled>上传csv文件</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                <div class="btn-group" role="group" aria-label="other-buttons">
+                    <button type="button" class="btn btn-outline-primary" id="getCRFModel">查看CRF模型准确率</button>
+                    <button type="button" class="btn btn-outline-primary" id="getDictModel">查看情感词典准确率</button>
+                    <button type="button" class="btn btn-outline-primary" id="getAtrain">随机抽取一句评论</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="result">运行结果:</label>
+            <textarea class="form-control" id="result" readonly></textarea>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/js/js.cookie.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/js/ea.js" charset="UTF-8"></script>
+{% endblock %}
