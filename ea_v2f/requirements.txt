@@ -1,1 +1,7 @@
-flask
+pandas==0.25.3
+Flask_Caching==1.8.0
+sklearn_crfsuite==0.3.6
+jieba==0.39
+Flask==1.1.1
+pyltp==0.2.1
+scikit_learn==0.22.2.post1

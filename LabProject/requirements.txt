@@ -1,6 +1,0 @@
-Django==2.2.10
-jieba==0.39
-pandas==0.25.3
-sklearn_crfsuite==0.3.6
-pyltp==0.2.1
-scikit_learn==0.21.3
