@@ -1,7 +1,7 @@
 from flask import (Blueprint, render_template,
                    request, make_response)
 from EmotionAnalysis.API import API
-import app
+from cache import cache
 import time
 import hashlib
 
@@ -26,10 +26,10 @@ def index():
     if not client_id:
         client_id = set_client_id()
         res.set_cookie('client_id', client_id)
-    cache_api = app.cache.get(client_id)
+    cache_api = cache.get(client_id)
     if cache_api is None:
         client_api = API()
-        app.cache.set(client_id, client_api)
+        cache.set(client_id, client_api)
     else:
-        app.cache.set(client_id, cache_api, timeout=60 * 60 * 24 * 1)
+        cache.set(client_id, cache_api, timeout=60 * 60 * 24 * 1)
     return res

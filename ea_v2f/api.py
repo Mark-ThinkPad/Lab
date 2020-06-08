@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from settings import BASE_DIR
 from EmotionAnalysis.API import API
-import app
+from cache import cache
 import os
 
 api = Blueprint('api', __name__)
@@ -16,7 +16,7 @@ def getContent():
     if not client_id:
         return {'status': 0, 'message': '系统缓存丢失, 将会自动刷新页面, 点击继续'}
 
-    cache_api: API = app.cache.get(client_id)
+    cache_api: API = cache.get(client_id)
     if cache_api is None:
         return {'status': 0, 'message': '系统缓存丢失, 将会自动刷新页面, 点击继续'}
 
@@ -33,7 +33,7 @@ def getFile():
     if not f:
         return {'status': 0, 'message': '请选择列名为"content"的csv文件!'}
 
-    cache_api: API = app.cache.get(client_id)
+    cache_api: API = cache.get(client_id)
     if cache_api is None:
         return {'status': 0, 'message': '系统缓存丢失, 将会自动刷新页面, 点击继续'}
 
@@ -53,7 +53,7 @@ def getTriple(kw):
     if not client_id:
         return {'status': 0, 'message': '系统缓存丢失, 将会自动刷新页面, 点击继续'}
 
-    cache_api: API = app.cache.get(client_id)
+    cache_api: API = cache.get(client_id)
     if cache_api is None:
         return {'status': 0, 'message': '系统缓存丢失, 将会自动刷新页面, 点击继续'}
 
